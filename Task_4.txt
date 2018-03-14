@@ -1,0 +1,40 @@
+Task 4: Creating UI
+
+-->In this Task I Had used Third Party Libray they are:
+   >ButterKnife - Field and method binding for Android views which uses annotation processing to generate boilerplate code for you.
+   >FABRevealLayout-A layout to transition between two views using a Floating Action Button
+
+--> I had Created the static feilds as shown in the UI
+-->Took activity_main.xml I did as below 
+             <RelativeLayout>
+                   <LinearLayout>.....................to show the date as shown in ui
+                   </LinearLayout>
+                   <TextView>
+                   </Textview>........................to show the week 
+                   <FABRevealLayout>
+                      <FloatingActionButton/>.................floating action button
+                      <LinearLayout></LinearLayout>...........Intial Layout before animation takesplace
+                      <RelativeLayout></RelativeLayout>.......secondary layout after animation
+                   </FABRevealLayout>
+            </RelativeLayout>
+-->In MainActivity.Class
+
+   >Using ButterKnife i had bind the views with the variables.
+   >Then Using ConfigureFABReveal() method configured the FABRevealLayout
+
+   > private void configureFABReveal() {
+        fabRevealLayout.setOnRevealChangeListener(new OnRevealChangeListener() {
+            @Override
+            public void onMainViewAppeared(FABRevealLayout fabRevealLayout, View mainView) {  
+            // we can do here whatever we need in the Initial Layout        
+            }
+
+            @Override
+            public void onSecondaryViewAppeared(final FABRevealLayout fabRevealLayout, View secondaryView) {
+            // we can do here whatever we need in the SecondaryLayout 
+            }
+        });
+    }
+-->By clicking on fab button it will take to the secondary layout and 
+-->Then by Clicking on cancel button in secondary layout we can go back to main menu 
+by using fabreveallayout.revealMainView();
